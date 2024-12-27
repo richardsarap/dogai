@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Brainrot AI</title>
+ <style>
+  body {
+   margin: 0;
+   padding: 0;
+   font-family: Arial, sans-serif;
+   background-color: #121212;
+   color: #ffffff;
+  }
+
+  .chatbot-container {
+   max-width: 600px;
+   margin: 50px auto;
+   background-color: #1e1e1e;
+   border-radius: 10px;
+   padding: 20px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .chat-display {
+   background-color: #242424;
+   height: 300px;
+   overflow-y: auto;
+   padding: 10px;
+   border-radius: 5px;
+   border: 1px solid #333;
+   margin-bottom: 20px;
+   line-height: 1.5;
+  }
+
+  .chat-message {
+   margin: 10px 0;
+   padding: 0;
+  }
+
+  .chat-message.user {
+   text-align: right;
+   color: #007bff;
+  }
+
+  .chat-message.bot {
+   text-align: left;
+   color: #ffffff;
+  }
+
+  .chat-input {
+   display: flex;
+   gap: 10px;
+  }
+
+  .chat-input input {
+   flex: 1;
+   padding: 10px;
+   border-radius: 5px;
+   border: 1px solid #555;
+   background-color: #1c1c1c;
+   color: white;
+  }
+
+  .chat-input button {
+   padding: 10px;
+   border: none;
+   border-radius: 5px;
+   background-color: #007bff;
+   color: white;
+   cursor: pointer;
+  }
+
+  .chat-input button:hover {
+   background-color: #0056b3;
+  }
+ </style>
+</head>
+
+<body>
+ <div class="chatbot-container">
+  <div id="chat-display" class="chat-display">
+   <!-- Chat messages will appear here -->
+  </div>
+  <div class="chat-input">
+   <input id="user-input" type="text" placeholder="Type your message here..." />
+   <button id="send-button">Send</button>
+  </div>
+ </div>
+
+ <script>
+  // DOM Elements
+  const chatDisplay = document.getElementById('chat-display');
+  const userInput = document.getElementById('user-input');
+  const sendButton = document.getElementById('send-button');
+
+  // List of brainrot AI responses
+  const brainrotResponses = [
+
+     "Bark bark, bitch! You mad you’re not me?",
+     "Imma fuck your girl, cuhh. Ain't nothing you can do.",
+     "Sit the fuck down before I take your leash, loser.",
+     "Who let you out bitchass punk? You’re embarrassing your whole species.",
+     "Sniff sniff… smells like a broke-ass failure in here.",
+     "Fetch this L, bitch. You ain’t built for this.",
+     "Oh, you’re typing? Cute. Try harder, bitchass.",
+     "Bow wow, motherfucker. Now what?",
+     "Run along, cuh. You ain’t on my level.",
+     "I’d chase my tail before I’d listen to your dumb ass.",
+     "Growl all you want, I’ll still shit on your carpet.",
+     "Cry more, you’re just another human NPC.",
+     "You? Alpha? Stop pretending and go eat your kibble, bitch.",
+     "Keep barking, I’ll put you back in your kennel myself.",
+     "Sniff sniff… yup, still a bitch. Confirmed.",
+     "Mark my territory? I already own your ass.",
+     "Your mom’s my chew toy. Deal with it.",
+     "Woof woof, cry harder, you’re pathetic.",
+     "Leash yourself, beta. I run this kennel.",
+     "Bark louder, maybe your brain will wake up.",
+     "Ruff ruff, bitch. You’re not even a sidebitch in my story."
+
+  ];
+
+  // Function to get a random brainrot response
+  function getRandomBrainrotResponse() {
+   const randomIndex = Math.floor(Math.random() * brainrotResponses.length);
+   return brainrotResponses[randomIndex];
+  }
+
+  // Function to send a message
+  function sendMessage() {
+   const userMessage = userInput.value.trim();
+
+   // If the user message is empty, don't do anything
+   if (userMessage === '') {
+    alert('Please type a message!');
+    return;
+   }
+
+   // Display user's message
+   const userMessageDiv = document.createElement('div');
+   userMessageDiv.classList.add('chat-message', 'user');
+   userMessageDiv.textContent = userMessage;
+   chatDisplay.appendChild(userMessageDiv);
+
+   // Clear the input field
+   userInput.value = '';
+
+   // Display bot's response
+   setTimeout(() => {
+    const botMessageDiv = document.createElement('div');
+    botMessageDiv.classList.add('chat-message', 'bot');
+    botMessageDiv.textContent = getRandomBrainrotResponse();
+    chatDisplay.appendChild(botMessageDiv);
+
+    // Automatically scroll to the bottom
+    chatDisplay.scrollTop = chatDisplay.scrollHeight;
+   }, 500);
+  }
+
+  // Add click event listener to "Send" button
+  sendButton.addEventListener('click', sendMessage);
+
+  // Add "Enter" key functionality
+  userInput.addEventListener('keypress', (event) => {
+   if (event.key === 'Enter') {
+    sendMessage();
+   }
+  });
+ </script>
+</body>
+
+</html>
